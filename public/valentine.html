@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: linear-gradient(to bottom, #ff4e50, #ff9a9e);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', cursive;
+        color: white;
+        text-align: center;
+    }
+
+    .container {
+        z-index: 2;
+    }
+
+    h1 {
+        font-size: 50px;
+        margin-bottom: 10px;
+        animation: glow 2s infinite alternate;
+    }
+
+    p {
+        font-size: 20px;
+        max-width: 500px;
+        margin: auto;
+        min-height: 50px;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        background: white;
+        color: #ff4e50;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #ffdde1;
+        transform: scale(1.1);
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 10px white; }
+        to { text-shadow: 0 0 25px pink; }
+    }
+
+    .heart {
+        position: absolute;
+        top: -10px;
+        font-size: 20px;
+        animation: fall linear infinite;
+        color: white;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(100vh);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Valentine ❤️</h1>
+    <p id="message"></p>
+    <button onclick="showLove()">Klik Untuk Cinta 💌</button>
+</div>
+
+<script>
+    const text = "Setiap detik bersamamu adalah hadiah terindah dalam hidupku. Terima kasih sudah menjadi alasan senyumku setiap hari. Aku mencintaimu hari ini, esok, dan selamanya ❤️";
+    let index = 0;
+
+    function showLove() {
+        const message = document.getElementById("message");
+        message.innerHTML = "";
+        index = 0;
+        typeWriter();
+    }
+
+    function typeWriter() {
+        if (index < text.length) {
+            document.getElementById("message").innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, 50);
+        }
+    }
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+        heart.style.fontSize = (15 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
