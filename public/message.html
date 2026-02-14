@@ -104,6 +104,38 @@
           opacity: 0.8;
         }
       }
+
+      .wave {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 9999px;
+  border: 2px solid rgba(232, 48, 110, 0.6);
+  animation: wavePulse 2s infinite;
+}
+
+.wave-delay-1 {
+  animation-delay: 0.5s;
+}
+
+.wave-delay-2 {
+  animation-delay: 1s;
+}
+
+@keyframes wavePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
     </style>
   </head>
 
@@ -197,6 +229,31 @@
                 alt="Naila"
                 class="w-full h-full object-cover rounded-full shadow-xl transition-transform duration-700 hover:scale-105"
               />
+              <!-- Mobile Play Button -->
+<button
+  id="mobilePlayBtn"
+  onclick="startRomanticEffect(true)"
+  class="absolute inset-0 flex items-center justify-center md:hidden"
+>
+  <div class="relative flex items-center justify-center">
+    
+    <!-- Wave Effect -->
+    <span class="wave"></span>
+    <span class="wave wave-delay-1"></span>
+    <span class="wave wave-delay-2"></span>
+
+    <!-- Play Circle -->
+    <div class="w-16 h-16 bg-white/90 backdrop-blur-md rounded-full 
+                flex items-center justify-center shadow-2xl 
+                transition hover:scale-110 relative z-10">
+      <span class="material-icons-round text-primary text-3xl">
+        play_arrow
+      </span>
+    </div>
+
+  </div>
+</button>
+
             </div>
           </div>
         </div>
@@ -542,31 +599,42 @@
     </audio>
 
     <script>
-      function startRomanticEffect() {
-        const music = document.getElementById("bgMusic");
-        music.play();
+  let flowerInterval;
 
-        setInterval(createFlower, 300);
-      }
+  function startRomanticEffect(fromMobile = false) {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.6;
+    music.play();
 
-      function createFlower() {
-        const flower = document.createElement("div");
-        flower.classList.add("flower");
+    if (!flowerInterval) {
+      flowerInterval = setInterval(createFlower, 300);
+    }
 
-        const flowers = ["🌸", "💮"];
-        flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+    if (fromMobile) {
+      const btn = document.getElementById("mobilePlayBtn");
+      if (btn) btn.style.display = "none";
+    }
+  }
 
-        flower.style.left = Math.random() * window.innerWidth + "px";
-        flower.style.animationDuration = 5 + Math.random() * 5 + "s";
-        flower.style.fontSize = 16 + Math.random() * 20 + "px";
+  function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
 
-        document.body.appendChild(flower);
+    const flowers = ["🌸", "💮"];
+    flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
 
-        setTimeout(() => {
-          flower.remove();
-        }, 10000);
-      }
-    </script>
+    flower.style.left = Math.random() * window.innerWidth + "px";
+    flower.style.animationDuration = 5 + Math.random() * 5 + "s";
+    flower.style.fontSize = 16 + Math.random() * 20 + "px";
+
+    document.body.appendChild(flower);
+
+    setTimeout(() => {
+      flower.remove();
+    }, 10000);
+  }
+</script>
+
     <script>
       const gallery = document.getElementById("memoryGallery");
       const totalImages = 31;
