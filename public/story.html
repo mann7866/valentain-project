@@ -1,0 +1,602 @@
+<!doctype html>
+
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Our Love Story - Happy Valentine's Day</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Dancing+Script:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#e8306e",
+              "background-light": "#f8f6f6",
+              "background-dark": "#211116",
+              gold: "#D4AF37", // Adding a custom gold for the requested accents
+            },
+            fontFamily: {
+              display: ["Plus Jakarta Sans", "sans-serif"],
+              handwriting: ["Dancing Script", "cursive"], // Custom font for the romantic title
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "2rem",
+              xl: "3rem",
+              full: "9999px",
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "float-delayed": "float 6s ease-in-out 3s infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom scrollbar for a polished look */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #e8306e;
+        border-radius: 20px;
+      }
+
+      /* Heart Shape Mask for Hero Image */
+      .heart-clip {
+        clip-path: path(
+          "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        );
+        transform: scale(20);
+        /* Adjust scale for path coordinate space */
+      }
+
+      .bg-grid-pattern {
+        background-image: radial-gradient(#e8306e 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.03;
+      }
+
+      .flower {
+        position: fixed;
+        top: -50px;
+        font-size: 20px;
+        animation: fall linear forwards;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0.8;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-100 antialiased overflow-x-hidden transition-colors duration-300"
+  >
+    <!-- Navbar / Header -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-2">
+          <span class="material-icons-round text-primary animate-pulse"
+            >favorite</span
+          >
+          <span
+            class="font-handwriting text-2xl font-bold text-gray-900 dark:text-white"
+            >Special message for you</span
+          >
+        </div>
+        <div
+          class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600 dark:text-gray-300"
+        >
+          <a class="hover:text-primary transition-colors" href="#hero">Home</a>
+          <a class="hover:text-primary transition-colors" href="#timeline"
+            >message for you</a
+          >
+          <a class="hover:text-primary transition-colors" href="#reasons"
+            >Why I Love You</a
+          >
+          <button
+            onclick="startRomanticEffect()"
+            class="bg-primary text-white px-5 py-2 rounded-full hover:bg-primary/90 transition-transform hover:scale-105 shadow-lg shadow-primary/30 text-xs tracking-wide uppercase font-bold"
+          >
+            Play Music
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <header
+      class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
+      id="hero"
+    >
+      <!-- Background Decorations -->
+      <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+      <div
+        class="absolute top-20 left-10 w-24 h-24 bg-primary/10 rounded-full blur-2xl animate-float"
+      ></div>
+      <div
+        class="absolute bottom-20 right-10 w-32 h-32 bg-gold/10 rounded-full blur-2xl animate-float-delayed"
+      ></div>
+      <!-- Floating Hearts -->
+      <div
+        class="absolute top-1/4 left-1/4 text-primary/20 text-4xl animate-float icon-float-1"
+      >
+        ♥
+      </div>
+      <div
+        class="absolute bottom-1/3 right-1/4 text-primary/20 text-6xl animate-float-delayed icon-float-2"
+      >
+        ♥
+      </div>
+      <div
+        class="absolute top-1/3 right-10 text-primary/10 text-3xl animate-pulse-slow"
+      >
+        ♥
+      </div>
+      <div class="relative z-10 container mx-auto px-6 text-center">
+        <div class="inline-block relative mb-8 group">
+          <!-- Golden Glow Ring -->
+          <div
+            class="absolute -inset-4 bg-gradient-to-r from-primary via-gold to-primary opacity-30 blur-lg rounded-full animate-pulse-slow group-hover:opacity-50 transition-opacity"
+          ></div>
+          <!-- Heart Shape Image Container -->
+          <!-- Note: Using SVG mask for smoother heart shape than pure CSS clip-path usually allows -->
+          <div class="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+            <!-- Glow Background -->
+            <div
+              class="absolute -inset-4 bg-gradient-to-r from-primary via-gold to-primary opacity-30 blur-2xl rounded-full animate-pulse-slow"
+            ></div>
+
+            <!-- Image Container -->
+            <div
+              class="relative w-full h-full rounded-full p-2 bg-gradient-to-r from-primary via-gold to-primary shadow-2xl"
+            >
+              <img
+                src="images/heroImage.jpg"
+                alt="Naila"
+                class="w-full h-full object-cover rounded-full shadow-xl transition-transform duration-700 hover:scale-105"
+              />
+            </div>
+          </div>
+        </div>
+        <h1
+          class="font-handwriting text-6xl md:text-8xl text-primary drop-shadow-sm mb-4"
+        >
+          To My Favorite Person
+        </h1>
+        <p
+          class="font-display text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-light tracking-wide max-w-2xl mx-auto"
+        >
+          Happy Valentine's Day,
+          <span
+            class="font-bold text-gray-800 dark:text-white border-b-2 border-gold/50"
+            >Naila</span
+          >.
+        </p>
+        <div class="mt-12 animate-bounce">
+          <span class="text-sm uppercase tracking-[0.2em] text-gray-400"
+            >Scroll for see messages</span
+          >
+          <span class="block material-icons-round text-primary/50 mt-2"
+            >keyboard_arrow_down</span
+          >
+        </div>
+      </div>
+    </header>
+    <!-- Timeline Section -->
+    <section
+      class="py-24 relative overflow-hidden bg-white/50 dark:bg-white/5 backdrop-blur-sm"
+      id="timeline"
+    >
+      <div class="container mx-auto px-6 max-w-4xl relative">
+        <!-- Section Header -->
+        <div class="text-center mb-20">
+          >
+          <h2
+            class="font-display text-4xl md:text-5xl font-bold mt-4 text-gray-900 dark:text-white"
+          >
+            This Message Is Just For You
+          </h2>
+        </div>
+        <!-- Vertical Line -->
+        <div
+          class="absolute left-6 md:left-1/2 top-40 bottom-20 w-0.5 bg-gradient-to-b from-primary/20 via-primary to-primary/20 md:-translate-x-1/2 border-dashed border-l-2 border-primary/30"
+        ></div>
+        <!-- Timeline Item 1 (Left) -->
+        <div
+          class="relative flex flex-col md:flex-row items-center justify-between mb-24 group"
+        >
+          <!-- Date Marker -->
+          <div
+            class="absolute left-6 md:left-1/2 w-8 h-8 bg-background-light dark:bg-background-dark border-4 border-primary rounded-full md:-translate-x-1/2 transform -translate-x-1/2 flex items-center justify-center z-10 shadow-[0_0_15px_rgba(232,48,110,0.5)]"
+          >
+            <div class="w-2 h-2 bg-primary rounded-full"></div>
+          </div>
+          <!-- Content -->
+          <div
+            class="ml-12 md:ml-0 md:w-5/12 md:text-right md:pr-12 order-2 md:order-1"
+          >
+            >
+            <h3
+              class="text-2xl font-bold text-gray-800 dark:text-white mb-2 font-display"
+            >
+              Hari Dimana kamu Membawa Cahaya ke Duniaku
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
+              Terima kasih telah memperkenalkanku pada jenis kebahagiaan yang
+              belum pernah benar-benar kukenal sebelumnya. Di hari-hari itu,
+              hatiku terasa lebih ringan, tawaku terasa lebih keras, dan waktu
+              seolah melambat agar kita bisa menikmati momen itu sedikit lebih
+              lama. Kita tertawa, kita berbagi hal-hal sederhana, dan entah
+              bagaimana hal-hal sederhana itu menjadi kenangan terindah dalam
+              hidupku.
+            </p>
+          </div>
+          <!-- Image -->
+          <div class="ml-12 md:ml-0 md:w-5/12 mt-6 md:mt-0 order-3 md:order-3">
+            <div
+              class="relative rounded-lg overflow-hidden shadow-xl transform group-hover:scale-105 transition-transform duration-500 border-4 border-white dark:border-gray-800 rotate-2 hover:rotate-0"
+            >
+              <img
+                alt="Couple holding coffee cups"
+                class="w-full h-48 object-cover"
+                data-alt="Two coffee cups on a wooden table"
+                src="images/messages/IMG_20241228_105055_911.jpg"
+              />
+              <div
+                class="absolute inset-0 bg-primary/10 mix-blend-overlay"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <!-- Timeline Item 2 (Right) -->
+        <div
+          class="relative flex flex-col md:flex-row items-center justify-between mb-24 group"
+        >
+          <div
+            class="absolute left-6 md:left-1/2 w-8 h-8 bg-background-light dark:bg-background-dark border-4 border-primary rounded-full md:-translate-x-1/2 transform -translate-x-1/2 flex items-center justify-center z-10 shadow-[0_0_15px_rgba(232,48,110,0.5)]"
+          >
+            <div class="w-2 h-2 bg-primary rounded-full"></div>
+          </div>
+          <!-- Image (Swapped for Right alignment) -->
+          <div class="ml-12 md:ml-0 md:w-5/12 mt-6 md:mt-0 order-3 md:order-1">
+            <div
+              class="relative rounded-lg overflow-hidden shadow-xl transform group-hover:scale-105 transition-transform duration-500 border-4 border-white dark:border-gray-800 -rotate-2 hover:rotate-0"
+            >
+              <img
+                alt="Travel scenery"
+                class="w-full h-48 object-cover"
+                data-alt="Scenic view of Paris streets"
+                data-location="Paris, France"
+                src="images/messages/IMG-20240526-WA0051.jpg"
+              />
+              <div
+                class="absolute inset-0 bg-primary/10 mix-blend-overlay"
+              ></div>
+            </div>
+          </div>
+          <!-- Content -->
+          <div
+            class="ml-12 md:ml-0 md:w-5/12 md:text-left md:pl-12 order-2 md:order-3"
+          >
+            <h3
+              class="text-2xl font-bold text-gray-800 dark:text-white mb-2 font-display"
+            >
+              Saat Kau Mengisi Hari-Hari Kosongku
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
+              Terima kasih telah melengkapi hari-hari yang dulunya terasa sunyi
+              dan tidak lengkap. Kau mengubah kesunyian menjadi kehangatan,
+              mengubah jam-jam yang tadinya terasa biasa menjadi sebuah moment
+              yang sangat bermakna, dan kekosongan yang dulu terasa, kini telah
+              hilang penuh dengan kebahagiaan. Bersamamu, bahkan hari yang
+              paling sederhana pun terasa jauh lebih indah.
+            </p>
+          </div>
+        </div>
+        <!-- Timeline Item 3 (Left) -->
+        <div
+          class="relative flex flex-col md:flex-row items-center justify-between group"
+        >
+          <div
+            class="absolute left-6 md:left-1/2 w-8 h-8 bg-background-light dark:bg-background-dark border-4 border-primary rounded-full md:-translate-x-1/2 transform -translate-x-1/2 flex items-center justify-center z-10 shadow-[0_0_15px_rgba(232,48,110,0.5)]"
+          >
+            <div class="w-2 h-2 bg-primary rounded-full"></div>
+          </div>
+          <div
+            class="ml-12 md:ml-0 md:w-5/12 md:text-right md:pr-12 order-2 md:order-1"
+          >
+            <h3
+              class="text-2xl font-bold text-gray-800 dark:text-white mb-2 font-display"
+            >
+              Cara Kau Mengajari Hatiku untuk Tersenyum
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
+              Terima kasih telah mengajariku cara tertawa bebas, tanpa takut,
+              tanpa ragu. Kau memberiku cinta yang begitu tulus, begitu lembut,
+              dan begitu jujur, sehingga mengubah cara pandangku terhadap dunia.
+              Melalui dirimu, aku belajar bahwa cinta itu bukan hanya sekedar
+              perasaan suka — cinta itu adalah sebuah tempat yang aman di mana
+              dua jiwa dapat beristirahat dengan tenang dan saling menguatkan.
+            </p>
+          </div>
+          <div class="ml-12 md:ml-0 md:w-5/12 mt-6 md:mt-0 order-3 md:order-3">
+            <div
+              class="relative rounded-lg overflow-hidden shadow-xl transform group-hover:scale-105 transition-transform duration-500 border-4 border-white dark:border-gray-800 rotate-1 hover:rotate-0"
+            >
+              <img
+                alt="New home boxes"
+                class="w-full h-48 object-cover"
+                data-alt="Cardboard boxes in a sunny room"
+                src="images/messages/IMG-20241216-WA0037.jpg"
+              />
+              <div
+                class="absolute inset-0 bg-primary/10 mix-blend-overlay"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Reasons Grid -->
+    <section
+      class="py-24 bg-background-light dark:bg-background-dark"
+      id="reasons"
+    >
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="font-handwriting text-5xl text-primary mb-4">
+            Why I Love You
+          </h2>
+          <p class="text-gray-500 dark:text-gray-400">
+            Hanya sebagian kecil dari jutaan alasan...
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
+        >
+          <!-- Card 1 -->
+          <div
+            class="bg-white dark:bg-[#2A181E] p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-primary/5 hover:border-primary/20 group"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors"
+            >
+              <span
+                class="material-icons-round text-primary group-hover:text-white"
+                >emoji_emotions</span
+              >
+            </div>
+            <h3 class="text-lg font-bold mb-2">Your Laugh</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Tawamu adalah melodi terindah yang pernah kudengar. Seperti sinar
+              mentari yang menembus badai, ia mengubah hari-hariku yang kelam
+              menjadi penuh harapan.
+            </p>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="bg-white dark:bg-[#2A181E] p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-primary/5 hover:border-primary/20 group"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors"
+            >
+              <span
+                class="material-icons-round text-primary group-hover:text-white"
+                >menu_book</span
+              >
+            </div>
+            <h3 class="text-lg font-bold mb-2">Your Mind</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Caramu memahami keadaan selalu disertai empati. Kau tidak hanya
+              menyampaikan pendapat, namun juga menjaga perasaanku di dalamnya.
+              <br />
+              Dalam setiap cara pandangmu, ada kelembutan yang membuatku merasa
+              aman. Kau tidak sekadar benar, namun juga membuatku merasa
+              dihargai, didengar, dan dicintai.
+            </p>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="bg-white dark:bg-[#2A181E] p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-primary/5 hover:border-primary/20 group"
+          >
+            <div
+              class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors"
+            >
+              <span
+                class="material-icons-round text-primary group-hover:text-white"
+                >volunteer_activism
+              </span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Your Sincerity</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Caramu mencintaiku begitu sederhana namun dalam. Kau menerima
+              segala kurang dan lebihku tanpa pernah menjadikannya beban. <br />
+              Cintamu tidak pernah bergantung pada keadaan. Ia tetap tinggal,
+              tetap hangat, meski dunia sedang tidak baik-baik saja. Dan aku
+              tahu, itu adalah ketulusan yang jarang dimiliki banyak orang, dan
+              di situlah aku merasa paling aman.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Romantic Memory Gallery -->
+    <section class="py-24 bg-white dark:bg-[#1a0f13]">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="font-handwriting text-5xl text-primary mb-4">
+            Pieces of Our Memories
+          </h2>
+          <p class="text-gray-500 dark:text-gray-400">
+            Setiap foto adalah cerita yang tak pernah ingin ku lupakan...
+          </p>
+        </div>
+
+        <!-- Masonry Style Grid -->
+        <div
+          id="memoryGallery"
+          class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Interactive Note Section -->
+    <section
+      class="py-20 bg-gradient-to-b from-primary/5 to-background-light dark:to-background-dark"
+    >
+      <div class="container mx-auto px-6 text-center max-w-2xl">
+        <div
+          class="bg-white dark:bg-[#2A181E] p-10 rounded-xl shadow-2xl relative border-t-8 border-primary"
+        >
+          <div
+            class="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+          >
+            <span class="material-icons-round">mail</span>
+          </div>
+          <h3
+            class="mt-4 text-2xl font-bold font-display text-gray-800 dark:text-white"
+          >
+            One Last Thing...
+          </h3>
+          <p
+            class="mt-6 text-lg text-gray-600 dark:text-gray-300 italic font-serif leading-loose"
+          >
+            "Setiap hari bersamamu adalah petualangan baru. Aku berjanji akan
+            selalu menjadi temanmu dalam segala hal, tempatmu mencurahkan isi
+            hati, dan penggemar terbesarmu. Ini untuk kita, hari ini dan
+            selamanya."
+          </p>
+          <div class="mt-8 flex justify-center">
+            <div class="h-px w-24 bg-primary/30"></div>
+          </div>
+          <p
+            class="mt-8 font-handwriting text-3xl text-primary transform -rotate-2"
+          >
+            Love always, Rohman
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer
+      class="bg-white dark:bg-background-dark py-12 border-t border-primary/10"
+    >
+      <div class="container mx-auto px-6 text-center">
+        <div class="flex justify-center gap-4 mb-6">
+          <span class="material-icons-round text-primary animate-pulse"
+            >favorite</span
+          >
+        </div>
+        <p class="text-gray-500 text-sm mb-2">Made with all my love for you.</p>
+        <p class="text-xs text-gray-400 uppercase tracking-widest">
+          © 2023 special message just for you
+        </p>
+      </div>
+    </footer>
+
+    <audio id="bgMusic" loop>
+      <source src="musics/music1.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      function startRomanticEffect() {
+        const music = document.getElementById("bgMusic");
+        music.play();
+
+        setInterval(createFlower, 300);
+      }
+
+      function createFlower() {
+        const flower = document.createElement("div");
+        flower.classList.add("flower");
+
+        const flowers = ["🌸", "💮"];
+        flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+
+        flower.style.left = Math.random() * window.innerWidth + "px";
+        flower.style.animationDuration = 5 + Math.random() * 5 + "s";
+        flower.style.fontSize = 16 + Math.random() * 20 + "px";
+
+        document.body.appendChild(flower);
+
+        setTimeout(() => {
+          flower.remove();
+        }, 10000);
+      }
+    </script>
+    <script>
+      const gallery = document.getElementById("memoryGallery");
+      const totalImages = 31;
+
+      // Buat array angka 1-27
+      let numbers = [];
+      for (let i = 1; i <= totalImages; i++) {
+        numbers.push(i);
+      }
+
+      // Acak urutan (shuffle)
+      numbers.sort(() => Math.random() - 0.5);
+
+      // Render
+      numbers.forEach((num) => {
+        const wrapper = document.createElement("div");
+        wrapper.className =
+          "break-inside-avoid group relative overflow-hidden rounded-2xl shadow-lg mb-6";
+
+        wrapper.innerHTML = `
+      <img 
+        src="images/memories/${num}.jpg"
+        class="w-full rounded-2xl transform group-hover:scale-110 transition duration-700"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition"></div>
+    `;
+
+        gallery.appendChild(wrapper);
+      });
+    </script>
+  </body>
+</html>
